@@ -1,0 +1,16 @@
+# Fichiers générés par CMake
+build/
+cmake-build-*/
+
+# Exécutables générés
+*.o
+*.a
+*.so
+*.out
+
+# Fichiers temporaires
+*.swp
+*~
+
+# Fichiers de l'éditeur
+.vscode/
