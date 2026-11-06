@@ -58,6 +58,8 @@ endif()
 # Bibliothèque métier
 add_library(uincampus_core
     src/version.cpp
+    src/regles.cpp
+    src/saisie.cpp
 )
 
 target_include_directories(
