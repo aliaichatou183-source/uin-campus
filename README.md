@@ -25,7 +25,9 @@ Le projet utilise CMake pour la configuration et Ninja pour la construction.
 - Comptage des unités d'enseignement validées.
 - Attribution automatique d'une mention.
 - Affichage d'un relevé récapitulatif des résultats.
-- Affichage de la version du programme avec l'option `--version`.
+- Affichage de la version avec `--version`.
+- Affichage de l'aide avec `--aide`.
+- Détection des options inconnues avec un code de sortie d'erreur.
 
 ### Barème des mentions
 
@@ -38,6 +40,16 @@ Le projet utilise CMake pour la configuration et Ninja pour la construction.
 | De 16 à 20 | Très bien |
 
 Le seuil de validation est fixé à **10/20**.
+
+## Concepts C++23 utilisés
+
+Le projet intègre plusieurs fonctionnalités modernes du C++ :
+
+- `std::array` : stockage des seuils de mentions dans un tableau de taille fixe.
+- `static_assert` : vérification de certaines règles à la compilation.
+- `std::span` : accès aux séquences de notes sans transfert de propriété des données.
+- `std::vector::reserve()` : réservation de capacité pour les vecteurs avant l'ajout des notes et coefficients.
+- `std::format` et `std::print` : formatage et affichage des informations.
 
 ## Environnement de développement
 
@@ -89,11 +101,21 @@ cmake --build --preset release
 ./build/release/uin-campus
 ```
 
-### Afficher la version
+### Options de la ligne de commande
+
+Afficher la version :
 
 ```bash
 ./build/debug/uin-campus --version
 ```
+
+Afficher l'aide :
+
+```bash
+./build/debug/uin-campus --aide
+```
+
+Une option inconnue affiche un message d'erreur et retourne le code de sortie `1`.
 
 ## Structure du projet
 
@@ -116,9 +138,11 @@ uin-campus/
 ├── TP3/
 │   ├── main.cpp
 │   └── README.md
+├── TP4/
+│   ├── main.cpp
+│   └── README.md
 ├── CMakeLists.txt
 ├── CMakePresets.json
-├── compile_commands.json
 ├── .clang-format
 ├── .clang-tidy
 ├── .gitignore
@@ -151,6 +175,7 @@ Il propose notamment :
 Depuis la racine du dépôt :
 
 ```bash
+mkdir -p build
 g++ -std=c++23 -Wall -Wextra -Wpedantic -Wshadow -Wconversion TP3/main.cpp -o build/tp3-statistiques
 ```
 
@@ -161,6 +186,27 @@ g++ -std=c++23 -Wall -Wextra -Wpedantic -Wshadow -Wconversion TP3/main.cpp -o bu
 ```
 
 Le TP3 reste indépendant de la compilation CMake du projet principal.
+
+## TP4 — Carnet de notes en mode menu
+
+Le dossier `TP4/` contient un travail pratique indépendant du projet principal.
+
+Il porte sur la structuration d'un programme en fonctions et la réalisation d'un carnet de notes en mode menu.
+
+### Compilation du TP4
+
+```bash
+mkdir -p build
+g++ -std=c++23 -Wall -Wextra -Wpedantic -Wshadow -Wconversion TP4/main.cpp -o build/tp4-carnet
+```
+
+### Exécution
+
+```bash
+./build/tp4-carnet
+```
+
+Le TP4 reste indépendant de la compilation CMake du projet principal.
 
 ## Dépôt GitHub
 
