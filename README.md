@@ -141,6 +141,9 @@ uin-campus/
 ├── TP4/
 │   ├── main.cpp
 │   └── README.md
+├── TP5/
+│   ├── main.cpp
+│   └── README.md
 ├── CMakeLists.txt
 ├── CMakePresets.json
 ├── .clang-format
@@ -207,6 +210,42 @@ g++ -std=c++23 -Wall -Wextra -Wpedantic -Wshadow -Wconversion TP4/main.cpp -o bu
 ```
 
 Le TP4 reste indépendant de la compilation CMake du projet principal.
+
+## TP5 — Réinventer std::vector : comprendre la gestion dynamique de la mémoire
+
+Le dossier `TP5/` contient un travail pratique indépendant du projet principal UIN-Campus.
+
+Il a pour objectif de comprendre le fonctionnement interne d'un tableau dynamique en C++ et les mécanismes de gestion de la mémoire.
+
+Les notions étudiées sont notamment :
+
+- L'allocation dynamique de mémoire avec `new[]`.
+- La libération de mémoire avec `delete[]`.
+- La gestion de la taille et de la capacité d'un tableau dynamique.
+- Le redimensionnement automatique d'un tableau lorsque sa capacité est atteinte.
+- La copie des éléments vers un nouvel espace mémoire.
+- Les problèmes liés à la copie superficielle et à la gestion des pointeurs.
+- La détection des erreurs mémoire avec AddressSanitizer et UndefinedBehaviorSanitizer.
+- L'utilisation de `std::vector` comme alternative à la gestion manuelle de la mémoire.
+
+### Compilation du TP5
+
+Depuis la racine du dépôt :
+
+```bash
+mkdir -p build
+g++ -std=c++23 -Wall -Wextra -Wpedantic -g -O1 \
+-fsanitize=address,undefined -fno-omit-frame-pointer \
+TP5/main.cpp -o build/tp5
+```
+
+### Exécution
+
+```bash
+./build/tp5
+```
+
+Le TP5 reste indépendant de la compilation CMake du projet principal.
 
 ## Dépôt GitHub
 
