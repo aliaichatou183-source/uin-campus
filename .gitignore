@@ -14,3 +14,4 @@ cmake-build-*/
 
 # Fichiers de l'éditeur
 .vscode/
+.cache/clangd/
